@@ -6,7 +6,9 @@ class ToDo extends Component{
 
     constructor(props){
         super(props);
-        const init_val=localStorage.getItem("data").split(",");
+        let init_val=[]
+        if(localStorage.getItem("data"))
+            init_val=localStorage.getItem("data").split(",");
         //console.log(init_val)
         this.state={
             items:init_val,
