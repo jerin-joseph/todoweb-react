@@ -6,17 +6,20 @@ class ToDo extends Component{
 
     constructor(props){
         super(props);
+        const init_val=localStorage.getItem("data").split(",");
+        //console.log(init_val)
         this.state={
-            items:[],
-            currText:""
+            items:init_val,
+            currText:"",
         }
-        
+        //this.setState({items:localStorage.getItem("data")})
+        //console.log(init_val)
     }
 
     handleAdd = ()=>{
         //alert("clicked")
         //alert(this.state.currText.trim().length)
-        if(this.state.currText.trim().length==0){
+        if(this.state.currText.trim().length===0){
             alert("Input cannot be empty. Try again.")
             return;
         }
@@ -24,8 +27,9 @@ class ToDo extends Component{
         curritems.push(this.state.currText);
         this.setState({items:curritems});
         console.log(this.state.items);
-        this.setState({currText:""})
-        document.getElementById("txtinput").value=""
+        this.setState({currText:""});
+        document.getElementById("txtinput").value="";
+        localStorage.setItem('data',curritems);
         
     }
 
