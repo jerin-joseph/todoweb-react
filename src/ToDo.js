@@ -47,6 +47,7 @@ class ToDo extends Component{
         let curritems=this.state.items;
         curritems.splice(k,1);
         this.setState({items:curritems})
+        localStorage.setItem('data',curritems);
     }
 
     render(){
